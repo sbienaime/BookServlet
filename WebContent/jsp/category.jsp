@@ -74,14 +74,32 @@
 			<!--  for each book in booklist, if book is of the category category, get list of authors and print the following  -->
 			
 				<tr>
-					<th scope="row" id="r100"><!--  book title goes here --></th>
+				
+					
+					
+					
+					
+					
+					
+					
+					
 					
 					      <%
                                           for  (Author author: authors) {
                                                                                    if  ( book.getId (). equals (author.getBookId ())) {
-                                   %><td> <%=author.getFirstName()+" "
+                                                                                	   
+                                                                                	   
+                                                                                	   
+                                                                                	   
+                                   %>
+                                   
+                                   
+                              <td scope="row" id="r100"><%=book.getBookTitle() %></td>
+                                   
+                                   
+                                   <td> <%=author.getFirstName()+" "
                                                               +author.getLastName () %> </td>
- 
+
                                    <%
                                          }
                                                                            }
