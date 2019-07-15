@@ -1,6 +1,10 @@
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html >
 <!--  get init paramater imageURL -->
+<%
+	String imageURL = application.getInitParameter("imageURL");
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -10,27 +14,31 @@
 <script src="js/bookstore.js"></script>
 </head>
 <body>
+
+	<!-- Step 5: Accessing the Model from the View -->
 	<div id="centered">
 
 		<!--  include header.jsp here -->
+		<jsp:include page="header.jsp" flush="true" />
 		<br />
 		<!--  include leftColumn.jsp here -->
+		<jsp:include page="leftColumn.jsp" flush="true" />
 		<span class="label">Featured Books</span>
 		<table>
 			<tr>
 				<td><span class="tooltip_img1"><img
-						src="<!--  imageURL goes here -->/A9781430248064-small_3.png" /></span></td>
-				<td><img src="<!--  imageURL goes here -->/A9781430239963-small_1.png" /></td>
-				<td><img src="<!--  imageURL goes here -->/A9781430247647-small_3.png" /></td>
-				<td><img src="<!--  imageURL goes here -->/A9781430231684-small_8.png" /></td>
-				<td><img src="<!--  imageURL goes here -->/A9781430249474-small_1.png" /></td>
+						src="<%=imageURL%>/A9781430248064-small_3.png" /></span></td>
+				<td><img src="<%=imageURL%>/A9781430239963-small_1.png" /></td>
+				<td><img src="<%=imageURL%>/A9781430247647-small_3.png" /></td>
+				<td><img src="<%=imageURL%>/A9781430231684-small_8.png" /></td>
+				<td><img src="<%=imageURL%>/A9781430249474-small_1.png" /></td>
 			</tr>
 			<tr>
-				<td><img src="<!--  imageURL goes here -->/A9781430248187-small_1.png" /></td>
-				<td><img src="<!--  imageURL goes here -->/A9781430243779-small_2.png" /></td>
-				<td><img src="<!--  imageURL goes here -->/A9781430247401-small_1.png" /></td>
-				<td><img src="<!--  imageURL goes here -->/A9781430246596-small_1.png" /></td>
-				<td><img src="<!--  imageURL goes here -->/A9781430257349-small_1.png" /></td>
+				<td><img src="<%=imageURL%>/A9781430248187-small_1.png" /></td>
+				<td><img src="<%=imageURL%>/A9781430243779-small_2.png" /></td>
+				<td><img src="<%=imageURL%>/A9781430247401-small_1.png" /></td>
+				<td><img src="<%=imageURL%>/A9781430246596-small_1.png" /></td>
+				<td><img src="<%=imageURL%>/A9781430257349-small_1.png" /></td>
 			</tr>
 		</table>
 	</div>
