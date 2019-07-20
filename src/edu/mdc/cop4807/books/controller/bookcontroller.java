@@ -30,13 +30,13 @@ import edu.mdc.cop4807.books.model.Category;
 		}
 		
 		)
-public class bookcontroller extends HttpServlet {
+public class Bookcontroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public bookcontroller() {
+    public Bookcontroller() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -58,7 +58,11 @@ public class bookcontroller extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String base = "/jsp/"; 
-		String url = base + "home.jsp"; 
+		String url = base + "home.jsp";
+		String firstname = request.getParameter("firstname"); 
+		String lastname =request.getParameter("lastname");
+		String publisher =request.getParameter("publisher");
+		String title = request.getParameter("title"); 
 		String action = request.getParameter("action"); 
 		String category = request.getParameter("category"); 
 		String keyWord = request.getParameter("keyWord"); 
@@ -75,6 +79,10 @@ public class bookcontroller extends HttpServlet {
 				case "search": 
 					searchBooks(request, response, keyWord); 
 					url = base + "searchResult.jsp"; 
+					break;
+				case "addBooks": 
+					updateBookList(request, response,title,firstname,lastname,publisher); 
+					url = base + "addBooks.jsp"; 
 					break; 
 							 
 					} 
@@ -85,6 +93,28 @@ public class bookcontroller extends HttpServlet {
 	}
 	
 	
+	
+	
+	
+	
+	
+	private void updateBookList(HttpServletRequest request, 
+	HttpServletResponse response, String title, String firstname, String lastname, String publisher) throws ServletException, IOException {
+		
+		
+		try { 
+			BookDAO bookDao = new BookDAOImpl(); 
+			bookDao.addBook(title, firstname,lastname, publisher); 
+			List<Book> bookList = bookDao.findAllBooks(); 
+			request.setAttribute("bookList", bookList); 
+			 
+			} catch (Exception e) { 
+				System.out.println(e); 
+				} 
+		
+		
+		
+	}
 	
 	private void findAllBooks(HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException { 

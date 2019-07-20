@@ -94,7 +94,7 @@
                                    %>
                                    
                                    
-                              <td scope="row" id="r100"><%=book.getBookTitle() %></td>
+                                   <td scope="row" id="r100"><%=book.getBookTitle() %></td>
                                    
                                    
                                    <td> <%=author.getFirstName()+" "

@@ -15,7 +15,6 @@ import edu.mdc.cop4807.books.model.Author;
 public class BookDAOImpl implements BookDAO {
 	private String PASSWORD = "password";
 	
-	
 	static {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -25,7 +24,7 @@ public class BookDAOImpl implements BookDAO {
 	}
 	
 	private Connection getConnection() throws SQLException  {
-		return DriverManager.getConnection("jdbc:mysql://localhost:80/books?serverTimezone=" + TimeZone.getDefault().getID(), "root", PASSWORD);
+		return DriverManager.getConnection("jdbc:mysql://localhost:3306/books?serverTimezone=" + TimeZone.getDefault().getID(), "root", PASSWORD);
 	}
 	
 	private void closeConnection(Connection connection) {
@@ -36,6 +35,62 @@ public class BookDAOImpl implements BookDAO {
 		} catch(SQLException ex) {
 			System.err.println("Error closing connection");
 		}
+	}
+	
+	
+	@SuppressWarnings("unused")
+	public void addBook(String title , String firstname, String lastname, String publisher) {
+		
+		
+		String values= title+firstname+lastname+publisher;
+		
+		try {
+			if (!title.isEmpty() && !firstname.isEmpty()  && !lastname.isEmpty()) {
+			
+			int Book_id=0;
+			String sql = "SELECT * FROM book INNER JOIN author ON book.id = author.book_id";
+			String bookidQuery="SELECT MAX(BOOK_ID) FROM author";
+			String insert1 ="INSERT INTO `book`( `CATEGORY_ID`, `BOOK_TITLE`, `PUBLISHER`) VALUES ( '1','"+title+"','"+publisher+"')";
+			
+					
+					
+					//"INSERT INTO author ('BOOK_ID','FIRST_NAME', 'LAST_NAME') VALUES ('14','"+firstname+"','"+lastname+"')";
+			Connection connection = null;
+			
+			
+			
+			try {
+				connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(insert1);
+				PreparedStatement statement1 = connection.prepareStatement(bookidQuery);
+			
+				
+				
+				 statement.executeUpdate();
+				 ResultSet result= statement1.executeQuery();
+				 result.next();
+				 Book_id=result.getInt(1);
+				 Book_id++;
+				 String insert3 ="INSERT INTO author (BOOK_ID, FIRST_NAME, LAST_NAME) VALUES ('"+Book_id+"', '"+firstname+"' , '"+lastname+"')";
+			     PreparedStatement statement2 = connection.prepareStatement(insert3);
+				 System.out.println(Book_id);
+				 statement2.executeUpdate();
+
+			} catch(SQLException ex) {
+				ex.printStackTrace();
+			} finally {
+				closeConnection(connection);
+			}
+
+			
+			
+			
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+		}
+
 	}
 
 	@Override

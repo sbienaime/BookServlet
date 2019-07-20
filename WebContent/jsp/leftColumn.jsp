@@ -7,7 +7,7 @@
 <%
 	String param1 = application.getInitParameter("bookstoreURL");
 %>
-
+<head>
 <link rel="stylesheet" href="css/bookstore.css" type="text/css" />
 <script src="js/bookstore.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
@@ -74,8 +74,13 @@
 			</ul></li>
 		<li><div>
 				<span class="label" style="margin-left: 15px;">Contact Us</span>
-
 			</div></li>
+			<li><div>
+			<a class="link1" href="<%=param1%>?action=addBooks"> <span
+					class="label" style="margin-left: 15px;">Add Books</span>
+				</a>
+			</div></li>
+			
 	</ul>
 	<form class="search">
 		<input type="hidden" name="action" value="search" /> <input id="text"

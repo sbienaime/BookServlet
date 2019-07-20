@@ -9,5 +9,6 @@ public interface BookDAO {
 	public void insert(Book book);
 	public void update(Book book);
 	public void delete(Long bookId);
+	public void addBook(String title , String firstname, String lastname, String publisher);
 
 }
