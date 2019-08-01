@@ -30,7 +30,6 @@
     <label style="padding:0; margin:0;"> Publisher</label> <input type="text" name="lastname">
   <input type="hidden" name="action" value="addBooks" /> 
   <input type="submit" value="Submit">
-
 </form>
 
 </body>

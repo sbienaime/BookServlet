@@ -77,7 +77,7 @@ public class BookDAOImpl implements BookDAO {
 				 statement2.executeUpdate();
 
 			} catch(SQLException ex) {
-				ex.printStackTrace();
+			   System.out.println("Faild to connect to database.");
 			} finally {
 				closeConnection(connection);
 			}
